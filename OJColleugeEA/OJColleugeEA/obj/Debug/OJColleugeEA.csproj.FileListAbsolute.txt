@@ -1,0 +1,11 @@
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\bin\Debug\OJColleugeEA.exe.config
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\bin\Debug\OJColleugeEA.exe
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\bin\Debug\OJColleugeEA.pdb
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.Properties.Resources.resources
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.csproj.GenerateResource.Cache
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.exe
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.pdb
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.EALoginForm.resources
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.ClassTableForm.resources
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.csprojResolveAssemblyReference.cache
+E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.GradeForm.resources
