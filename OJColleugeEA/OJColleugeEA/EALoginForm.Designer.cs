@@ -55,6 +55,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.YearOfGrade = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.CTSave = new System.Windows.Forms.Button();
+            this.ReadCT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CodeView)).BeginInit();
             this.LoginGroup.SuspendLayout();
             this.QueryGroup.SuspendLayout();
@@ -318,12 +320,35 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "学年：";
             // 
+            // CTSave
+            // 
+            this.CTSave.Enabled = false;
+            this.CTSave.Location = new System.Drawing.Point(18, 207);
+            this.CTSave.Name = "CTSave";
+            this.CTSave.Size = new System.Drawing.Size(75, 23);
+            this.CTSave.TabIndex = 11;
+            this.CTSave.Text = "保存课表";
+            this.CTSave.UseVisualStyleBackColor = true;
+            this.CTSave.Click += new System.EventHandler(this.CTSave_Click);
+            // 
+            // ReadCT
+            // 
+            this.ReadCT.Location = new System.Drawing.Point(108, 207);
+            this.ReadCT.Name = "ReadCT";
+            this.ReadCT.Size = new System.Drawing.Size(75, 23);
+            this.ReadCT.TabIndex = 12;
+            this.ReadCT.Text = "读取课表";
+            this.ReadCT.UseVisualStyleBackColor = true;
+            this.ReadCT.Click += new System.EventHandler(this.ReadCT_Click);
+            // 
             // EALoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(459, 333);
+            this.Controls.Add(this.ReadCT);
+            this.Controls.Add(this.CTSave);
             this.Controls.Add(this.GradeBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.QueryGroup);
@@ -374,6 +399,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox YearOfGrade;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button CTSave;
+        private System.Windows.Forms.Button ReadCT;
     }
 }
 

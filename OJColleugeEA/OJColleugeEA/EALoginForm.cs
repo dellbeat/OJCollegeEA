@@ -23,6 +23,8 @@ namespace OJColleugeEA
 
         ClassTableForm TableForm = null;
         int IsLogin = 0;
+        DecodeForm dec = null;
+        SaveClassTable table=null;
 
         #region 登陆至教务系统
         /// <summary>
@@ -185,6 +187,7 @@ namespace OJColleugeEA
             QueryGroup.Enabled = true;
             LogOut.Visible = true;
             GradeBox.Enabled = true;
+            CTSave.Enabled = true;
             MessageBox.Show(LoginInfo.UserName + "同学，欢迎你！", "欢迎使用本软件", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
@@ -305,6 +308,7 @@ namespace OJColleugeEA
             GradeBox.Enabled = false;
             TermOfGrade.Text = null;
             YearOfGrade.Text = null;
+            CTSave.Enabled = false;
             TermYear.Items.Clear();
             MessageBox.Show("退出登录成功，欢迎下次使用，再见！", "退出成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             RequestCode();
@@ -332,8 +336,8 @@ namespace OJColleugeEA
                 return;
             }
 
-            LoginInfo.SelectedYear = YearOfGrade.Text;
-            LoginInfo.SelectedTerm = TermOfGrade.Text;
+            LoginInfo.SelectedYearOfGrade = YearOfGrade.Text;
+            LoginInfo.SelectedTermOfGrade = TermOfGrade.Text;
 
             string Year, Index;
             Regex YearString = new Regex("\\d{4}-\\d{4}");
@@ -374,6 +378,44 @@ namespace OJColleugeEA
                 Clipboard.SetDataObject(output);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CTSave_Click(object sender, EventArgs e)
+        {
+            if(LoginInfo.ClassList.Count==0)
+            {
+                return;
+            }
+
+            if (table == null || table.IsDisposed)
+            {
+                table = new SaveClassTable();
+                table.Show();
+            }
+            else
+            {
+                table.Activate();
+            }
+        }
+
+        private void ReadCT_Click(object sender, EventArgs e)
+        {
+            if (dec == null || dec.IsDisposed)
+            {
+                dec = new DecodeForm();
+                dec.Show();
+            }
+            else
+            {
+                dec.Activate();
+            }
+            
+        }
+
 
         //protected struct PerSon
         //{

@@ -46,6 +46,8 @@ namespace OJColleugeEA
         public static int MaxIndex = -1;
         public static string SelectedYear;//通用于课表和成绩 下同
         public static string SelectedTerm;
+        public static string SelectedYearOfGrade;//通用于课表和成绩 下同
+        public static string SelectedTermOfGrade;
         public static bool LoginSucceed;
         public static string FailedReason;
         public static string FailedLog;

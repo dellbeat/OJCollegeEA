@@ -9,3 +9,15 @@ E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.
 E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.ClassTableForm.resources
 E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.csprojResolveAssemblyReference.cache
 E:\软件制作\ACM\c++学习\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.GradeForm.resources
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\bin\Debug\OJColleugeEA.exe.config
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.exe
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.pdb
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\bin\Debug\OJColleugeEA.exe
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\bin\Debug\OJColleugeEA.pdb
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.csprojResolveAssemblyReference.cache
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.EALoginForm.resources
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.Properties.Resources.resources
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.csproj.GenerateResource.Cache
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.ClassTableForm.resources
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.SaveClassTable.resources
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.DecodeForm.resources

@@ -219,7 +219,7 @@ namespace OJColleugeEA
                         CntOfClass = Convert.ToInt32(number.Match(numbers.Match(node.ClassTime).Value).Value);
                     }
 
-                    for(int x=0;x<CntOfClass;x++)
+                    for (int x = 0; x < CntOfClass; x++) 
                     {
                         LoginInfo.ClassTable[(i + x), j] = Convert.ToString(LoginInfo.MaxIndex);
                     }

@@ -20,10 +20,34 @@ namespace OJColleugeEA
         }
 
         string[] date = { "一", "二", "三", "四", "五", "六", "日" };
+        string[,] ClassTable = new string[12, 7];
+        List<LoginInfo.ClassNode> ClassList = new List<LoginInfo.ClassNode>();
+        string Year = "";
+        string Term = "";
+
+        private void InitData()
+        {
+            Year = LoginInfo.SelectedYear;
+            Term = LoginInfo.SelectedTerm;
+
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    ClassTable[i, j] = LoginInfo.ClassTable[i, j];
+                }
+            }
+
+            for (int i = 0; i < LoginInfo.ClassList.Count; i++)
+            {
+                ClassList.Add(LoginInfo.ClassList[i]);
+            }
+        }
 
         private void InitForm()
         {
-            this.Text += "(" + LoginInfo.SelectedYear + LoginInfo.SelectedTerm + "课表)【双击课程名可显示具体信息】";
+            InitData();
+            this.Text += "(" + Year + Term + "课表)【双击课程名可显示具体信息】";
             for (int i = 0; i < 7; i++) 
             {
                 DrawDateLabel(23, 94, 60 + i * 93, 17, "星期" + date[i], "Date" + Convert.ToString(i), Convert.ToSingle(10.5));
@@ -38,7 +62,7 @@ namespace OJColleugeEA
             {
                 for (int j = 0; j < 7; j++) 
                 {
-                    DrawClassLabel(38, 94, 60 + j * 93, 41 + i * 37, LoginInfo.ClassTable[i, j]==null?"":LoginInfo.ClassList[Convert.ToInt32(LoginInfo.ClassTable[i, j])].ClassName, "Class" + Convert.ToString(i*7+j));
+                    DrawClassLabel(38, 94, 60 + j * 93, 41 + i * 37, ClassTable[i, j]==null?"":ClassList[Convert.ToInt32(ClassTable[i, j])].ClassName, "Class" + Convert.ToString(i*7+j));
                 }
             }
         }
@@ -90,16 +114,16 @@ namespace OJColleugeEA
             int index;
             string output = "";
 
-            if (LoginInfo.ClassTable[x, y] == null)
+            if (ClassTable[x, y] == null)
             {
                 return;
             }
             else
             {
-                index = Convert.ToInt32(LoginInfo.ClassTable[x, y]);
+                index = Convert.ToInt32(ClassTable[x, y]);
             }
 
-            output = "课程名称：" + LoginInfo.ClassList[index].ClassName + "\r\n课程时间：" + LoginInfo.ClassList[index].ClassTime + "\r\n课程教师：" + LoginInfo.ClassList[index].Teacher + "\r\n课程地点：" + LoginInfo.ClassList[index].Location;
+            output = "课程名称：" + ClassList[index].ClassName + "\r\n课程时间：" + ClassList[index].ClassTime + "\r\n课程教师：" + ClassList[index].Teacher + "\r\n课程地点：" + ClassList[index].Location;
 
             MessageBox.Show(output, "星期" + date[y] + "第" + Convert.ToString(x + 1) + "节课信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
