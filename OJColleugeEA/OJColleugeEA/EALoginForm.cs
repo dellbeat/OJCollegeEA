@@ -232,6 +232,7 @@ namespace OJColleugeEA
             {
                 TableForm = new ClassTableForm();
                 TableForm.Show();
+                LoginInfo.QueryFormOnline = true;
             }
             else
             {

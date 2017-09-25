@@ -119,6 +119,7 @@ namespace OJColleugeEA
 
             LoginInfo.SelectedYear = Year;
             LoginInfo.SelectedTerm = Trem;
+            LoginInfo.QueryFormOnline = false;
 
             if (table == null || table.IsDisposed)
             {

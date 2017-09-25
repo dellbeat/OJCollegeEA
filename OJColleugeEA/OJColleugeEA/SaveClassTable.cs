@@ -26,7 +26,7 @@ namespace OJColleugeEA
                 MessageBox.Show("请输入密码后再试！", "密码为空提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else if(LoginInfo.ClassList.Count==0)
+            else if(LoginInfo.ClassList.Count==0||LoginInfo.QueryFormOnline==false)
             {
                 MessageBox.Show("请查询课表后再试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

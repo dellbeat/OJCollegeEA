@@ -52,6 +52,7 @@ namespace OJColleugeEA
         public static string FailedReason;
         public static string FailedLog;
         public static List<string> YearsOfGrade = new List<string>();
+        public static bool QueryFormOnline = false;
 
         /// <summary>
         /// 设置功能节点的值
