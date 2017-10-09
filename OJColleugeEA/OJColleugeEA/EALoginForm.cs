@@ -86,16 +86,43 @@ namespace OJColleugeEA
         private void FormLoadInit()
         {
             GetCookies newcookie = new GetCookies();
+            DialogResult result;
             if (newcookie.Getstatus() != "OK")
             {
-                MessageBox.Show("无法请求Cookies，程序即将退出，请检查网络状态后重新启动程序再试！", "初始化失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Environment.Exit(0);
+                result=MessageBox.Show("无法请求Cookies，请检查网络状态后再试！\r\n选择“中止”退出程序\r\n选择“重试”尝试重新请求\r\n选择“忽略”进入离线读取模式", "初始化失败", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                if(result==DialogResult.Abort)
+                {
+                    System.Environment.Exit(0);
+                }
+                else if(result==DialogResult.Retry)
+                {
+                    FormLoadInit();
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+                //System.Environment.Exit(0);
             }
             GetViewCode newviewcode = new GetViewCode();
             if(newviewcode.GetStatus()!="OK")
             {
-                MessageBox.Show("无法加载验证码图片，程序即将退出，请检查网络状态后重新启动程序再试！", "初始化失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Environment.Exit(0);
+                result = MessageBox.Show("无法加载验证码图片，请检查网络状态后再试！\r\n选择“中止”退出程序\r\n选择“重试”尝试重新请求\r\n选择“忽略”进入离线读取模式", "初始化失败", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                if (result == DialogResult.Abort)
+                {
+                    System.Environment.Exit(0);
+                }
+                else if (result == DialogResult.Retry)
+                {
+                    FormLoadInit();
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+                //System.Environment.Exit(0);
             }
             CodeView.Image = newviewcode.GetPic();           
         }

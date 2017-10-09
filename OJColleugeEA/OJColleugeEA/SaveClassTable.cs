@@ -67,7 +67,6 @@ namespace OJColleugeEA
 
             Output += "SelectedYear:" + LoginInfo.SelectedYear + "\r\n";
             Output += "SelectedTerm:" + LoginInfo.SelectedTerm + "\r\n";
-            
 
             Base64CryptFun Crypt = new Base64CryptFun();
             Output = Crypt.Encode(Output);
