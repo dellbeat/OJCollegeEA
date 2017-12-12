@@ -41,6 +41,7 @@ namespace OJColleugeEA
         public static List<GradeNode> GradeList = new List<GradeNode>();
         public static node ClassTableCode = new LoginInfo.node();
         public static node GradeCode = new LoginInfo.node();
+        public static node CommentCode = new node();
         public static List<string> YearsOfTerm = new List<string>();
         public static List<ClassNode> ClassList = new List<ClassNode>();
         public static int MaxIndex = -1;

@@ -57,6 +57,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.CTSave = new System.Windows.Forms.Button();
             this.ReadCT = new System.Windows.Forms.Button();
+            this.OneKeyComment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CodeView)).BeginInit();
             this.LoginGroup.SuspendLayout();
             this.QueryGroup.SuspendLayout();
@@ -341,12 +342,24 @@
             this.ReadCT.UseVisualStyleBackColor = true;
             this.ReadCT.Click += new System.EventHandler(this.ReadCT_Click);
             // 
+            // OneKeyComment
+            // 
+            this.OneKeyComment.Enabled = false;
+            this.OneKeyComment.Location = new System.Drawing.Point(108, 251);
+            this.OneKeyComment.Name = "OneKeyComment";
+            this.OneKeyComment.Size = new System.Drawing.Size(75, 23);
+            this.OneKeyComment.TabIndex = 13;
+            this.OneKeyComment.Text = "一键评教";
+            this.OneKeyComment.UseVisualStyleBackColor = true;
+            this.OneKeyComment.Click += new System.EventHandler(this.OneKeyComment_Click);
+            // 
             // EALoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(459, 333);
+            this.Controls.Add(this.OneKeyComment);
             this.Controls.Add(this.ReadCT);
             this.Controls.Add(this.CTSave);
             this.Controls.Add(this.GradeBox);
@@ -401,6 +414,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button CTSave;
         private System.Windows.Forms.Button ReadCT;
+        private System.Windows.Forms.Button OneKeyComment;
     }
 }
 

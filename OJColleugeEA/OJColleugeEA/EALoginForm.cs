@@ -19,12 +19,14 @@ namespace OJColleugeEA
             InitializeComponent();
             LoginInfo.ClassTableCode = LoginInfo.SetNodeValue("xskbcx", "N121603", "学生个人课表(重要)");
             LoginInfo.GradeCode = LoginInfo.SetNodeValue("xscjcx", "N121605", "成绩查询");
+            LoginInfo.CommentCode = LoginInfo.SetNodeValue("xsjxpj2", "N121401", "教师评价");
         }
 
         ClassTableForm TableForm = null;
         int IsLogin = 0;
         DecodeForm dec = null;
         SaveClassTable table=null;
+        string Year, Index;
 
         #region 登陆至教务系统
         /// <summary>
@@ -215,6 +217,7 @@ namespace OJColleugeEA
             LogOut.Visible = true;
             GradeBox.Enabled = true;
             CTSave.Enabled = true;
+            OneKeyComment.Enabled = true;
             MessageBox.Show(LoginInfo.UserName + "同学，欢迎你！", "欢迎使用本软件", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
@@ -305,6 +308,11 @@ namespace OJColleugeEA
 
         private void QueryClassTable_Click(object sender, EventArgs e)
         {
+            if(TermYear.Text==""||TermIndex.Text=="")
+            {
+                MessageBox.Show("请选择后再试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             QueryTable();
         }
 
@@ -337,6 +345,7 @@ namespace OJColleugeEA
             TermOfGrade.Text = null;
             YearOfGrade.Text = null;
             CTSave.Enabled = false;
+            OneKeyComment.Enabled = false;
             TermYear.Items.Clear();
             MessageBox.Show("退出登录成功，欢迎下次使用，再见！", "退出成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             RequestCode();
@@ -356,7 +365,7 @@ namespace OJColleugeEA
             }
         }
 
-        private void QueryGrade_Click(object sender, EventArgs e)
+        private async void QueryGrade_Click(object sender, EventArgs e)
         {
             if (TermOfGrade.Text == null || YearOfGrade.Text == null)
             {
@@ -366,8 +375,6 @@ namespace OJColleugeEA
 
             LoginInfo.SelectedYearOfGrade = YearOfGrade.Text;
             LoginInfo.SelectedTermOfGrade = TermOfGrade.Text;
-
-            string Year, Index;
             Regex YearString = new Regex("\\d{4}-\\d{4}");
             Year = YearString.Match(YearOfGrade.Text).Value;
             if (TermOfGrade.Text == "第一学期")
@@ -379,32 +386,42 @@ namespace OJColleugeEA
                 Index = "2";
             }
 
-            GetGrade Grade = new GetGrade(Year, Index);
-            if(Grade.Get_Status()==false)
-            {
-                MessageBox.Show("查询过程中遇到错误，可能的原因为：" + LoginInfo.FailedReason + "请尝试解决问题后再试！\r\n错误日志：" + LoginInfo.FailedLog, "查询失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            await QueryTask();
 
-            if(Grade.Get_EmptyStatus()==true)
-            {
-                MessageBox.Show("当前选择的学期暂无成绩信息，请选择其他学期查询！", "查询提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+        }
 
-            string output = "";
+        private Task QueryTask()
+        {
+            return Task.Run(() =>
+                {
+                    GetGrade Grade = new GetGrade(Year, Index);
+                    if (Grade.Get_Status() == false)
+                    {
+                        MessageBox.Show("查询过程中遇到错误，可能的原因为：" + LoginInfo.FailedReason + "请尝试解决问题后再试！\r\n错误日志：" + LoginInfo.FailedLog, "查询失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-            for (int i = 0; i < LoginInfo.GradeList.Count; i++)
-            {
-                output += "课程名称：" + LoginInfo.GradeList[i].ClassName + "；绩点：" + LoginInfo.GradeList[i].ClassPoint + "；学分：" + LoginInfo.GradeList[i].ClassCredit + "；成绩：" + LoginInfo.GradeList[i].ClassGrade + "\r\n";
-            }
+                    if (Grade.Get_EmptyStatus() == true)
+                    {
+                        MessageBox.Show("当前选择的学期暂无成绩信息，请选择其他学期查询！", "查询提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
 
-            DialogResult result = MessageBox.Show(output+"点击“是”将成绩结果复制到剪切板并退出对话框，点击“否”则直接退出对话框。", "成绩查询结果", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    string output = "";
 
-            if(result==DialogResult.Yes)
-            {
-                Clipboard.SetDataObject(output);
-            }
+                    for (int i = 0; i < LoginInfo.GradeList.Count; i++)
+                    {
+                        output += "课程名称：" + LoginInfo.GradeList[i].ClassName + "；绩点：" + LoginInfo.GradeList[i].ClassPoint + "；学分：" + LoginInfo.GradeList[i].ClassCredit + "；成绩：" + LoginInfo.GradeList[i].ClassGrade + "\r\n";
+                    }
+
+                    DialogResult result = MessageBox.Show(output + "点击“是”将成绩结果复制到剪切板并退出对话框，点击“否”则直接退出对话框。", "成绩查询结果", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        Clipboard.SetDataObject(output);
+                    }
+                }
+            );
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -442,6 +459,12 @@ namespace OJColleugeEA
                 dec.Activate();
             }
             
+        }
+
+        private void OneKeyComment_Click(object sender, EventArgs e)
+        {
+            CommentForm form = new CommentForm();
+            form.Show();
         }
 
 

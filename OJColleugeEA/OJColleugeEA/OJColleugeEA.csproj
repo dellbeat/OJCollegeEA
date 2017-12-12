@@ -70,6 +70,13 @@
     <Compile Include="ClassTableForm.Designer.cs">
       <DependentUpon>ClassTableForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentForm.Designer.cs">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommentTools.cs" />
     <Compile Include="DecodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +108,9 @@
     <Compile Include="SetHeader.cs" />
     <EmbeddedResource Include="ClassTableForm.resx">
       <DependentUpon>ClassTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommentForm.resx">
+      <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DecodeForm.resx">
       <DependentUpon>DecodeForm.cs</DependentUpon>
