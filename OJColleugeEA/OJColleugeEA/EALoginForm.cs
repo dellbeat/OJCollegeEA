@@ -20,6 +20,7 @@ namespace OJColleugeEA
             LoginInfo.ClassTableCode = LoginInfo.SetNodeValue("xskbcx", "N121603", "学生个人课表(重要)");
             LoginInfo.GradeCode = LoginInfo.SetNodeValue("xscjcx", "N121605", "成绩查询");
             LoginInfo.CommentCode = LoginInfo.SetNodeValue("xsjxpj2", "N121401", "教师评价");
+            LoginInfo.GetClassNode = LoginInfo.SetNodeValue("xf_xsqxxxk", "N121203", "全校选修课");
         }
 
         ClassTableForm TableForm = null;
@@ -27,6 +28,7 @@ namespace OJColleugeEA
         DecodeForm dec = null;
         SaveClassTable table=null;
         string Year, Index;
+        string output = "";
 
         #region 登陆至教务系统
         /// <summary>
@@ -218,6 +220,7 @@ namespace OJColleugeEA
             GradeBox.Enabled = true;
             CTSave.Enabled = true;
             OneKeyComment.Enabled = true;
+            GetPublicClass.Enabled = true;
             MessageBox.Show(LoginInfo.UserName + "同学，欢迎你！", "欢迎使用本软件", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
@@ -303,7 +306,7 @@ namespace OJColleugeEA
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label6.Text = DateTime.Now.ToShortTimeString() + ":" + DateTime.Now.Millisecond;
+            label6.Text = DateTime.Now.ToLongTimeString() + ":" + DateTime.Now.Millisecond;
         }
 
         private void QueryClassTable_Click(object sender, EventArgs e)
@@ -388,6 +391,13 @@ namespace OJColleugeEA
 
             await QueryTask();
 
+            DialogResult result = MessageBox.Show(output + "点击“是”将成绩结果复制到剪切板并退出对话框，点击“否”则直接退出对话框。", "成绩查询结果", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+            {
+                Clipboard.SetDataObject(output);
+            }
+
         }
 
         private Task QueryTask()
@@ -407,18 +417,9 @@ namespace OJColleugeEA
                         return;
                     }
 
-                    string output = "";
-
                     for (int i = 0; i < LoginInfo.GradeList.Count; i++)
                     {
                         output += "课程名称：" + LoginInfo.GradeList[i].ClassName + "；绩点：" + LoginInfo.GradeList[i].ClassPoint + "；学分：" + LoginInfo.GradeList[i].ClassCredit + "；成绩：" + LoginInfo.GradeList[i].ClassGrade + "\r\n";
-                    }
-
-                    DialogResult result = MessageBox.Show(output + "点击“是”将成绩结果复制到剪切板并退出对话框，点击“否”则直接退出对话框。", "成绩查询结果", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        Clipboard.SetDataObject(output);
                     }
                 }
             );
@@ -465,6 +466,12 @@ namespace OJColleugeEA
         {
             CommentForm form = new CommentForm();
             form.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            PublicClassForm forms = new PublicClassForm();
+            forms.Show();
         }
 
 

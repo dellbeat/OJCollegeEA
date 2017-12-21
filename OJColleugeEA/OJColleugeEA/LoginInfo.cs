@@ -9,12 +9,14 @@ using System.Text.RegularExpressions;
 
 namespace OJColleugeEA
 {
-    class LoginInfo
+    public class LoginInfo
     {
         public static string UserAccount;
         public static string UserName;
         public static CookieContainer EACookie;
         public static string[,] ClassTable = new string[12, 7];//课程表表格
+        
+
         public struct node
         {
             public string linkname;//如xskbcx（学生课表查询）
@@ -38,10 +40,23 @@ namespace OJColleugeEA
             public string ClassGrade;
         }
 
+        public struct OpenClassNode
+        {
+            public string ClassName;
+            public string Teacher;
+            public string HiddenName;
+            public string HiddenValue;
+            public int Count;
+            public bool NeedBook;
+            public bool Selected;
+        }
+
+        public static List<OpenClassNode> PublicClassList = new List<OpenClassNode>();
         public static List<GradeNode> GradeList = new List<GradeNode>();
         public static node ClassTableCode = new LoginInfo.node();
         public static node GradeCode = new LoginInfo.node();
         public static node CommentCode = new node();
+        public static node GetClassNode = new node();
         public static List<string> YearsOfTerm = new List<string>();
         public static List<ClassNode> ClassList = new List<ClassNode>();
         public static int MaxIndex = -1;
