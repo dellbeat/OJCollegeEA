@@ -27,6 +27,7 @@ namespace OJColleugeEA
         int IsLogin = 0;
         DecodeForm dec = null;
         SaveClassTable table=null;
+        CommentForm forms = null;
         string Year, Index;
         string output = "";
 
@@ -220,8 +221,25 @@ namespace OJColleugeEA
             GradeBox.Enabled = true;
             CTSave.Enabled = true;
             OneKeyComment.Enabled = true;
-            GetPublicClass.Enabled = true;
             MessageBox.Show(LoginInfo.UserName + "同学，欢迎你！", "欢迎使用本软件", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (TermYear.Items.Count == 0 && YearOfGrade.Items.Count == 0)
+            {
+                CTSave.Enabled = false;
+                QueryGroup.Enabled = false;
+                GradeBox.Enabled = false;
+                MessageBox.Show("由于无法获取课表查询范围和成绩查询范围，两块查询区域和保存课表功能已被软件禁用。（通常都是临近期末教务处关闭了课表和成绩的查询通道）", "禁用提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (TermYear.Items.Count == 0)
+            {
+                CTSave.Enabled = false;
+                QueryGroup.Enabled = false;
+                MessageBox.Show("由于无法获取课表查询范围，课表查询区域和保存课表功能已被软件禁用。（原因不明，如果网页端可以查询请联系作者）", "禁用提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (YearOfGrade.Items.Count == 0)
+            {
+                GradeBox.Enabled = false;
+                MessageBox.Show("由于无法获取成绩查询范围，成绩查询区域已被软件禁用。（通常是还没到公布成绩的时间）", "禁用提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
 
@@ -434,6 +452,7 @@ namespace OJColleugeEA
         {
             if(LoginInfo.ClassList.Count==0)
             {
+                MessageBox.Show("请执行课表查询操作后再试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -464,15 +483,25 @@ namespace OJColleugeEA
 
         private void OneKeyComment_Click(object sender, EventArgs e)
         {
-            CommentForm form = new CommentForm();
-            form.Show();
+            if (forms == null || forms.IsDisposed)
+            {
+                forms = new CommentForm();
+                if (forms.IsDisposed == false)
+                {
+                    forms.Show();
+                }
+            }
+            else
+            {
+                forms.Activate();
+            }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            PublicClassForm forms = new PublicClassForm();
-            forms.Show();
-        }
+        //private void button1_Click_1(object sender, EventArgs e)
+        //{
+        //    PublicClassForm forms = new PublicClassForm();
+        //    forms.Show();
+        //}
 
 
         //protected struct PerSon

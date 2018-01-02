@@ -58,7 +58,6 @@
             this.CTSave = new System.Windows.Forms.Button();
             this.ReadCT = new System.Windows.Forms.Button();
             this.OneKeyComment = new System.Windows.Forms.Button();
-            this.GetPublicClass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CodeView)).BeginInit();
             this.LoginGroup.SuspendLayout();
             this.QueryGroup.SuspendLayout();
@@ -354,25 +353,12 @@
             this.OneKeyComment.UseVisualStyleBackColor = true;
             this.OneKeyComment.Click += new System.EventHandler(this.OneKeyComment_Click);
             // 
-            // GetPublicClass
-            // 
-            this.GetPublicClass.Enabled = false;
-            this.GetPublicClass.Location = new System.Drawing.Point(19, 251);
-            this.GetPublicClass.Name = "GetPublicClass";
-            this.GetPublicClass.Size = new System.Drawing.Size(75, 23);
-            this.GetPublicClass.TabIndex = 14;
-            this.GetPublicClass.Text = "公选抢课";
-            this.GetPublicClass.UseVisualStyleBackColor = true;
-            this.GetPublicClass.Visible = false;
-            this.GetPublicClass.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // EALoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(459, 333);
-            this.Controls.Add(this.GetPublicClass);
             this.Controls.Add(this.OneKeyComment);
             this.Controls.Add(this.ReadCT);
             this.Controls.Add(this.CTSave);
@@ -429,7 +415,6 @@
         private System.Windows.Forms.Button CTSave;
         private System.Windows.Forms.Button ReadCT;
         private System.Windows.Forms.Button OneKeyComment;
-        private System.Windows.Forms.Button GetPublicClass;
     }
 }
 

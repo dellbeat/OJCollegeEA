@@ -21,3 +21,4 @@ J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.csproj.Gener
 J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.ClassTableForm.resources
 J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.SaveClassTable.resources
 J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.DecodeForm.resources
+J:\ojc\OJCollegeEA\OJColleugeEA\OJColleugeEA\obj\Debug\OJColleugeEA.CommentForm.resources

@@ -17,12 +17,12 @@ namespace OJColleugeEA
             InitializeComponent();
         }
 
-        GetClass getfc = null;
+        //GetClass getfc = null;
         string indexs = "";
 
         private void Init_Click(object sender, EventArgs e)
         {
-            getfc = new GetClass();
+            //getfc = new GetClass();
             ClassList.Rows.Clear();
             int index = 0;
             for (int i = 0; i < LoginInfo.PublicClassList.Count; i++)
