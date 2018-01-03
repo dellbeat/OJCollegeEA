@@ -22,7 +22,7 @@ namespace OJColleugeEA
         private void Init()
         {
             Tool = new CommentTools();
-            if(Tool.IsComment.Count==0)
+            if (Tool.IsComment.Count == 0)
             {
                 this.Close();
             }

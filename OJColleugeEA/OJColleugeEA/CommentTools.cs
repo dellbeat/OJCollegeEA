@@ -29,7 +29,8 @@ namespace OJColleugeEA
         Regex ClassRegex = new Regex("<td>.+?</td>\r\n", RegexOptions.Multiline);
         Regex NameRegex = new Regex("<td>.+?</td>", RegexOptions.Singleline);
         Regex LinkRegex=new Regex("window.open\\('.+?'",RegexOptions.Singleline);
-        Regex ValueRegex = new Regex("name=\".+?\" value=\"100\"", RegexOptions.Multiline);
+        Regex NumRegex=new Regex("value=\"\\d+\"",RegexOptions.Singleline);//匹配最高分数
+        
         Regex NameClassRegex = new Regex("\".+?\"", RegexOptions.Singleline);
 
         public CommentTools()
@@ -101,7 +102,10 @@ namespace OJColleugeEA
                 return false;
             }
 
-            MatchCollection Matchs = ValueRegex.Matches(Page);//获取所有分数为100分的标签
+            int nums = Convert.ToInt32(NumRegex.Match(Page).Value.Replace("value=", "").Replace("\"", ""));
+            string regexstr = string.Format("name=\".+?\" value=\"{0}\"", nums);
+            Regex ValueRegex = new Regex(regexstr, RegexOptions.Multiline);
+            MatchCollection Matchs = ValueRegex.Matches(Page);//获取所有分数最高的标签
             List<string> NameList = new List<string>();
             foreach(Match i in Matchs)
             {
@@ -117,7 +121,7 @@ namespace OJColleugeEA
 
             foreach (string i in NameList)
             {
-                postvalue += "&" + HttpUtility.UrlEncode(i) + "=100";
+                postvalue += "&" + HttpUtility.UrlEncode(i) + "=" + nums.ToString();
             }
 
             postvalue += "&txt_pjxx=&Button1=+%CC%E1+%BD%BB+";
