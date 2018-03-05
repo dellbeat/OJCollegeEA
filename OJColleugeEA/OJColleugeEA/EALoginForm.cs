@@ -48,7 +48,7 @@ namespace OJColleugeEA
                 LoginInfo.GetUserName();
                 LoginInfo.InitYearOfTerm();
                 LoginInfo.InitGradeRange();
-                Action<string> InitTermItems = (x) => { TermYear.Items.Add(x); };
+                Action<string> InitTermItems = (x) => { if (TermYear.Items.IndexOf(x) == -1) { TermYear.Items.Add(x); } };
                 for (int i = 0; i < LoginInfo.YearsOfTerm.Count;i++ )
                 {
                     TermYear.BeginInvoke(InitTermItems, LoginInfo.YearsOfTerm[i]);
@@ -58,7 +58,7 @@ namespace OJColleugeEA
                 {
                     YearOfGrade.BeginInvoke(InitGradeItems, LoginInfo.YearsOfGrade[i]);
                 }
-                    IsLogin = 1;
+                IsLogin = 1;
             }
             else if(loginfc.GetLoginStatus()=="InvalidCode")
             {
