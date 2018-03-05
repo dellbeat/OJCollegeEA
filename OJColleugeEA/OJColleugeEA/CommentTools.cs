@@ -139,11 +139,11 @@ namespace OJColleugeEA
             }
         }
 
-        public void Submit()
+        public void CommentClass()
         {
             if (PageStr.IndexOf("已经评价过") != -1)
             {
-                MessageBox.Show("已经完成评价任务，无需评教！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("已经完成评价任务，无需评教！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -165,7 +165,10 @@ namespace OJColleugeEA
                     IsComment[i] = false;
                 }
             }
+        }
 
+        public void Submit()
+        {
             Regex input = new Regex("input type=\"hidden\" name=\".*?\" value=\".*?\"");
             Regex inputname = new Regex("name=\".*?\"");
             Regex inputvalue = new Regex("value=\".*?\"");
@@ -192,7 +195,7 @@ namespace OJColleugeEA
             }
             else
             {
-                MessageBox.Show("一键评教出现问题，请自行登陆教务系统确认是否完成评教！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("提交结果出现问题，请自行登陆教务系统确认是否完成评教！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

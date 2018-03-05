@@ -394,6 +394,7 @@ namespace OJColleugeEA
                 return;
             }
 
+            output = "";
             LoginInfo.SelectedYearOfGrade = YearOfGrade.Text;
             LoginInfo.SelectedTermOfGrade = TermOfGrade.Text;
             Regex YearString = new Regex("\\d{4}-\\d{4}");
@@ -409,11 +410,14 @@ namespace OJColleugeEA
 
             await QueryTask();
 
-            DialogResult result = MessageBox.Show(output + "点击“是”将成绩结果复制到剪切板并退出对话框，点击“否”则直接退出对话框。", "成绩查询结果", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-            if (result == DialogResult.Yes)
+            if (output != "") 
             {
-                Clipboard.SetDataObject(output);
+                DialogResult result = MessageBox.Show(output + "点击“是”将成绩结果复制到剪切板并退出对话框，点击“否”则直接退出对话框。", "成绩查询结果", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                if (result == DialogResult.Yes)
+                {
+                    Clipboard.SetDataObject(output);
+                }
             }
 
         }
